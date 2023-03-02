@@ -8,9 +8,15 @@ public interface WorldConfigBundle {
 
 	ProximityConfig proximity();
 
+	boolean needsObfuscation();
+
 	int minSectionIndex();
 
 	int maxSectionIndex();
 
 	boolean shouldObfuscate(int y);
+
+	int nextRandomObfuscationBlock(int y);
+
+	int nextRandomProximityBlock(int y);
 }

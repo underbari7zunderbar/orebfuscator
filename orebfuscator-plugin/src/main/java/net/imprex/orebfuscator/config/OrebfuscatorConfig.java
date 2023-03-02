@@ -27,10 +27,11 @@ import net.imprex.orebfuscator.util.BlockPos;
 import net.imprex.orebfuscator.util.HeightAccessor;
 import net.imprex.orebfuscator.util.MinecraftVersion;
 import net.imprex.orebfuscator.util.OFCLogger;
+import net.imprex.orebfuscator.util.WeightedIntRandom;
 
 public class OrebfuscatorConfig implements Config {
 
-	private static final int CONFIG_VERSION = 2;
+	private static final int CONFIG_VERSION = 3;
 
 	private final OrebfuscatorGeneralConfig generalConfig = new OrebfuscatorGeneralConfig();
 	private final OrebfuscatorAdvancedConfig advancedConfig = new OrebfuscatorAdvancedConfig();
@@ -97,14 +98,7 @@ public class OrebfuscatorConfig implements Config {
 	}
 
 	private void deserialize(ConfigurationSection section) {
-		if (section.getInt("version", -1) == 1) {
-			// check if config is still using old path MemoryConfiguration
-			String obfuscationConfigPath = section.contains("world") ? "world" : "obfuscation";
-			ConfigParser.convertSectionListToSection(section, obfuscationConfigPath);
-			ConfigParser.convertSectionListToSection(section, "proximity");
-			section.set("version", CONFIG_VERSION);
-		}
-
+		ConfigVersionConverters.convertToLatestVersion(section);
 		if (section.getInt("version", -1) != CONFIG_VERSION) {
 			throw new RuntimeException("config is not up to date, please delete your config");
 		}
@@ -181,6 +175,11 @@ public class OrebfuscatorConfig implements Config {
 	}
 
 	@Override
+	public byte[] systemHash() {
+		return systemHash;
+	}
+
+	@Override
 	public GeneralConfig general() {
 		return this.generalConfig;
 	}
@@ -196,23 +195,8 @@ public class OrebfuscatorConfig implements Config {
 	}
 
 	@Override
-	public WorldConfigBundle bundle(World world) {
+	public WorldConfigBundle world(World world) {
 		return this.getWorldConfigBundle(world);
-	}
-
-	@Override
-	public BlockFlags blockFlags(World world) {
-		return this.getWorldConfigBundle(world).blockFlags;
-	}
-
-	@Override
-	public boolean needsObfuscation(World world) {
-		return this.getWorldConfigBundle(world).needsObfuscation;
-	}
-
-	@Override
-	public ObfuscationConfig obfuscation(World world) {
-		return this.getWorldConfigBundle(world).obfuscationConfig;
 	}
 
 	@Override
@@ -223,16 +207,6 @@ public class OrebfuscatorConfig implements Config {
 			}
 		}
 		return false;
-	}
-
-	@Override
-	public ProximityConfig proximity(World world) {
-		return this.getWorldConfigBundle(world).proximityConfig;
-	}
-
-	@Override
-	public byte[] systemHash() {
-		return systemHash;
 	}
 
 	public boolean usesBlockSpecificConfigs() {
@@ -287,6 +261,10 @@ public class OrebfuscatorConfig implements Config {
 
 		private final int minSectionIndex;
 		private final int maxSectionIndex;
+	
+		private final HeightAccessor heightAccessor;
+		private final WeightedIntRandom[] obfuscationRandoms;
+		private final WeightedIntRandom[] proximityRandoms;
 
 		public OrebfuscatorWorldConfigBundle(World world) {
 			String worldName = world.getName();
@@ -305,21 +283,31 @@ public class OrebfuscatorConfig implements Config {
 					this.obfuscationConfig != null ? this.obfuscationConfig.getMaxY() : BlockPos.MIN_Y,
 					this.proximityConfig != null ? this.proximityConfig.getMaxY() : BlockPos.MIN_Y);
 
-			HeightAccessor heightAccessor = HeightAccessor.get(world);
+			this.heightAccessor = HeightAccessor.get(world);
 			this.minSectionIndex = heightAccessor.getSectionIndex(this.minY);
 			this.maxSectionIndex = heightAccessor.getSectionIndex(this.maxY - 1) + 1;
+
+			this.obfuscationRandoms = this.obfuscationConfig != null
+					? this.obfuscationConfig.createWeightedRandoms(heightAccessor) : null;
+			this.proximityRandoms = this.obfuscationConfig != null
+					? this.proximityConfig.createWeightedRandoms(heightAccessor) : null;
 		}
 
-		private <T extends AbstractWorldConfig> T findConfig(Stream<? extends T> configs, String worldName, String configName) {
+		private <T extends AbstractWorldConfig> T findConfig(Stream<? extends T> configs, String worldName, String configType) {
 			List<T> matchingConfigs = configs
 					.filter(config -> config.matchesWorldName(worldName))
 					.collect(Collectors.toList());
 
 			if (matchingConfigs.size() > 1) {
-				OFCLogger.warn(String.format("world '%s' has more than one %s config choosing first one", worldName, configName));
+				OFCLogger.warn(String.format("world '%s' has more than one %s config choosing first one", worldName, configType));
 			}
 
-			return matchingConfigs.size() > 0 ? matchingConfigs.get(0) : null;
+			T config = matchingConfigs.size() > 0 ? matchingConfigs.get(0) : null;
+			String configName = config == null ? "null" : config.getName();
+
+			OFCLogger.debug(String.format("using '%s' %s config for world '%s'", configName, configType, worldName));
+
+			return config;
 		}
 
 		@Override
@@ -338,6 +326,11 @@ public class OrebfuscatorConfig implements Config {
 		}
 
 		@Override
+		public boolean needsObfuscation() {
+			return this.needsObfuscation;
+		}
+
+		@Override
 		public int minSectionIndex() {
 			return this.minSectionIndex;
 		}
@@ -350,6 +343,18 @@ public class OrebfuscatorConfig implements Config {
 		@Override
 		public boolean shouldObfuscate(int y) {
 			return y >= this.minY && y <= this.maxY;
+		}
+
+		@Override
+		public int nextRandomObfuscationBlock(int y) {
+			return this.obfuscationRandoms != null
+					? this.obfuscationRandoms[y - this.heightAccessor.getMinBuildHeight()].next() : 0;
+		}
+
+		@Override
+		public int nextRandomProximityBlock(int y) {
+			return this.proximityRandoms != null
+					? this.proximityRandoms[y - this.heightAccessor.getMinBuildHeight()].next() : 0;
 		}
 	}
 }
