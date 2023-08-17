@@ -16,8 +16,8 @@ import net.imprex.orebfuscator.cache.ObfuscationCache;
 import net.imprex.orebfuscator.config.OrebfuscatorConfig;
 import net.imprex.orebfuscator.obfuscation.ObfuscationSystem;
 import net.imprex.orebfuscator.player.OrebfuscatorPlayerMap;
-import net.imprex.orebfuscator.proximityhider.ProximityDirectorThread;
-import net.imprex.orebfuscator.proximityhider.ProximityPacketListener;
+import net.imprex.orebfuscator.proximity.ProximityDirectorThread;
+import net.imprex.orebfuscator.proximity.ProximityPacketListener;
 import net.imprex.orebfuscator.util.HeightAccessor;
 import net.imprex.orebfuscator.util.OFCLogger;
 
@@ -43,8 +43,6 @@ public class Orebfuscator extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		try {
-			new JavaVersionNotifier(this);
-
 			// Check if protocolLib is enabled
 			if (this.getServer().getPluginManager().getPlugin("ProtocolLib") == null) {
 				OFCLogger.log(Level.SEVERE, "ProtocolLib is not found! Plugin cannot be enabled.");
@@ -53,6 +51,8 @@ public class Orebfuscator extends JavaPlugin implements Listener {
 
 			// Load configurations
 			this.config = new OrebfuscatorConfig(this);
+
+			new SyncPacketListenerDeprecationNotifier(this);
 
 			this.playerMap = new OrebfuscatorPlayerMap(this);
 
