@@ -29,6 +29,20 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<configuration>
+					<shadedArtifactAttached>true</shadedArtifactAttached>
+					<shadedClassifierName>mojang-mapped</shadedClassifierName>
+					<relocations>
+						<relocation>
+							<pattern>net.imprex.orebfuscator.nms.v1_19_R1</pattern>
+							<shadedPattern>net.imprex.orebfuscator.nms.v1_19_R1_mojang</shadedPattern>
+						</relocation>
+					</relocations>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>net.md-5</groupId>
 				<artifactId>specialsource-maven-plugin</artifactId>
 				<version>${plugin.specialsource.version}</version>

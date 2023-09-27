@@ -5,8 +5,8 @@ import java.util.Set;
 
 import org.bukkit.World;
 
-import net.imprex.orebfuscator.NmsInstance;
 import net.imprex.orebfuscator.Orebfuscator;
+import net.imprex.orebfuscator.OrebfuscatorNms;
 import net.imprex.orebfuscator.chunk.Chunk;
 import net.imprex.orebfuscator.chunk.ChunkSection;
 import net.imprex.orebfuscator.chunk.ChunkStruct;
@@ -81,7 +81,7 @@ public class ObfuscationProcessor {
 					if (!obfuscated && BlockFlags.isProximityBitSet(obfuscateBits) && proximityConfig.shouldObfuscate(y)) {
 						proximityBlocks.add(new BlockPos(x, y, z));
 						if (BlockFlags.isUseBlockBelowBitSet(obfuscateBits)) {
-							blockState = getBlockStateBelow(blockFlags, chunk, x, y, z);
+							blockState = getBlockStateBelow(bundle, chunk, x, y, z);
 						} else {
 							blockState = bundle.nextRandomProximityBlock(y);
 						}
@@ -106,17 +106,20 @@ public class ObfuscationProcessor {
 
 	// returns first block below given position that wouldn't be obfuscated in any
 	// way at given position
-	private int getBlockStateBelow(BlockFlags blockFlags, Chunk chunk, int x, int y, int z) {
+	private int getBlockStateBelow(WorldConfigBundle bundle, Chunk chunk, int x, int y, int z) {
+		BlockFlags blockFlags = bundle.blockFlags();
+
 		for (int targetY = y - 1; targetY > chunk.getHeightAccessor().getMinBuildHeight(); targetY--) {
 			int blockData = chunk.getBlockState(x, targetY, z);
-			if (blockData != -1) {
+			if (blockData != -1 && OrebfuscatorNms.isOccluding(blockData)) {
 				int mask = blockFlags.flags(blockData, y);
 				if (BlockFlags.isEmpty(mask) || BlockFlags.isAllowForUseBlockBelowBitSet(mask)) {
 					return blockData;
 				}
 			}
 		}
-		return 0;
+
+		return bundle.nextRandomProximityBlock(y);
 	}
 
 	private boolean shouldObfuscate(ObfuscationTask task, Chunk chunk, int x, int y, int z) {
@@ -138,6 +141,6 @@ public class ObfuscationProcessor {
 			blockId = task.getBlockState(x, y, z);
 		}
 
-		return blockId >= 0 && NmsInstance.isOccluding(blockId);
+		return blockId >= 0 && OrebfuscatorNms.isOccluding(blockId);
 	}
 }
