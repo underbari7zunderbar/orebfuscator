@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-api/orebfuscator-api.iml" filepath="$PROJECT_DIR$/orebfuscator-api/orebfuscator-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-api-example/orebfuscator-api-example.iml" filepath="$PROJECT_DIR$/orebfuscator-api-example/orebfuscator-api-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-common/orebfuscator-common.iml" filepath="$PROJECT_DIR$/orebfuscator-common/orebfuscator-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-api/orebfuscator-compatibility-api.iml" filepath="$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-api/orebfuscator-compatibility-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-bukkit/orebfuscator-compatibility-bukkit.iml" filepath="$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-bukkit/orebfuscator-compatibility-bukkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-folia/orebfuscator-compatibility-folia.iml" filepath="$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-folia/orebfuscator-compatibility-folia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-paper/orebfuscator-compatibility-paper.iml" filepath="$PROJECT_DIR$/orebfuscator-compatibility/orebfuscator-compatibility-paper/orebfuscator-compatibility-paper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-api/orebfuscator-nms-api.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-api/orebfuscator-nms-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_11_R1/orebfuscator-nms-v1_11_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_11_R1/orebfuscator-nms-v1_11_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_12_R1/orebfuscator-nms-v1_12_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_12_R1/orebfuscator-nms-v1_12_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_13_R2/orebfuscator-nms-v1_13_R2.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_13_R2/orebfuscator-nms-v1_13_R2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_14_R1/orebfuscator-nms-v1_14_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_14_R1/orebfuscator-nms-v1_14_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_15_R1/orebfuscator-nms-v1_15_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_15_R1/orebfuscator-nms-v1_15_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_16_R1/orebfuscator-nms-v1_16_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_16_R1/orebfuscator-nms-v1_16_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_16_R2/orebfuscator-nms-v1_16_R2.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_16_R2/orebfuscator-nms-v1_16_R2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_16_R3/orebfuscator-nms-v1_16_R3.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_16_R3/orebfuscator-nms-v1_16_R3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_17_R1/orebfuscator-nms-v1_17_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_17_R1/orebfuscator-nms-v1_17_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_18_R1/orebfuscator-nms-v1_18_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_18_R1/orebfuscator-nms-v1_18_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_18_R2/orebfuscator-nms-v1_18_R2.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_18_R2/orebfuscator-nms-v1_18_R2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_19_R1/orebfuscator-nms-v1_19_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_19_R1/orebfuscator-nms-v1_19_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_19_R2/orebfuscator-nms-v1_19_R2.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_19_R2/orebfuscator-nms-v1_19_R2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_19_R3/orebfuscator-nms-v1_19_R3.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_19_R3/orebfuscator-nms-v1_19_R3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R1/orebfuscator-nms-v1_20_R1.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R1/orebfuscator-nms-v1_20_R1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R2/orebfuscator-nms-v1_20_R2.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R2/orebfuscator-nms-v1_20_R2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R3/orebfuscator-nms-v1_20_R3.iml" filepath="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R3/orebfuscator-nms-v1_20_R3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orebfuscator-plugin/orebfuscator-plugin.iml" filepath="$PROJECT_DIR$/orebfuscator-plugin/orebfuscator-plugin.iml" />
+    </modules>
+  </component>
+</project>

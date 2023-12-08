@@ -16,7 +16,7 @@ public final class ChunkCapabilities {
 	// hasLight < 1.14
 
 	private static final boolean hasChunkPosFieldUnloadPacket = MinecraftVersion.minorVersion() > 20 ||
-			(MinecraftVersion.minorVersion() == 20 && MinecraftVersion.revisionNumber() >= 2);
+			(MinecraftVersion.minorVersion() == 20 && MinecraftVersion.revisionNumber() >= 3);
 	private static final boolean hasClientboundLevelChunkPacketData = MinecraftVersion.minorVersion() >= 18;
 	private static final boolean hasBiomePalettedContainer = MinecraftVersion.minorVersion() >= 18;
 	private static final boolean hasSingleValuePalette = MinecraftVersion.minorVersion() >= 18;
