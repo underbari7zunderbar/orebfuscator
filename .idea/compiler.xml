@@ -6,36 +6,38 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="orebfuscator-nms-v1_16_R2" />
         <module name="orebfuscator-compatibility-bukkit" />
-        <module name="orebfuscator-nms-v1_16_R1" />
-        <module name="orebfuscator-nms-v1_10_R1" />
         <module name="orebfuscator-api" />
         <module name="orebfuscator-nms-api" />
-        <module name="orebfuscator-nms-v1_18_R1" />
-        <module name="orebfuscator-nms-v1_18_R2" />
-        <module name="orebfuscator-nms-v1_14_R1" />
-        <module name="orebfuscator-nms-v1_12_R1" />
-        <module name="orebfuscator-nms-v1_16_R3" />
         <module name="orebfuscator-compatibility-paper" />
         <module name="orebfuscator-nms-v1_20_R2" />
-        <module name="orebfuscator-nms-v1_9_R2" />
         <module name="orebfuscator-nms-v1_20_R3" />
-        <module name="orebfuscator-nms-v1_20_R1" />
         <module name="orebfuscator-common" />
         <module name="orebfuscator-plugin" />
-        <module name="orebfuscator-nms-v1_15_R1" />
-        <module name="orebfuscator-nms-v1_17_R1" />
         <module name="orebfuscator-compatibility-folia" />
         <module name="orebfuscator-compatibility-api" />
-        <module name="orebfuscator-nms-v1_19_R1" />
-        <module name="orebfuscator-nms-v1_13_R1" />
-        <module name="orebfuscator-nms-v1_19_R2" />
-        <module name="orebfuscator-nms-v1_19_R3" />
-        <module name="orebfuscator-nms-v1_11_R1" />
-        <module name="orebfuscator-nms-v1_13_R2" />
         <module name="orebfuscator-api-example" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="orebfuscator-nms-v1_10_R1" target="11" />
+      <module name="orebfuscator-nms-v1_11_R1" target="11" />
+      <module name="orebfuscator-nms-v1_12_R1" target="11" />
+      <module name="orebfuscator-nms-v1_13_R1" target="11" />
+      <module name="orebfuscator-nms-v1_13_R2" target="11" />
+      <module name="orebfuscator-nms-v1_14_R1" target="11" />
+      <module name="orebfuscator-nms-v1_15_R1" target="11" />
+      <module name="orebfuscator-nms-v1_16_R1" target="11" />
+      <module name="orebfuscator-nms-v1_16_R2" target="11" />
+      <module name="orebfuscator-nms-v1_16_R3" target="11" />
+      <module name="orebfuscator-nms-v1_17_R1" target="11" />
+      <module name="orebfuscator-nms-v1_18_R1" target="11" />
+      <module name="orebfuscator-nms-v1_18_R2" target="11" />
+      <module name="orebfuscator-nms-v1_19_R1" target="11" />
+      <module name="orebfuscator-nms-v1_19_R2" target="11" />
+      <module name="orebfuscator-nms-v1_19_R3" target="11" />
+      <module name="orebfuscator-nms-v1_20_R1" target="11" />
+      <module name="orebfuscator-nms-v1_9_R2" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
