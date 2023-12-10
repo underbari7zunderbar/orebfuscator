@@ -19,7 +19,6 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R3/pom.xml" />
         <option value="$PROJECT_DIR$/orebfuscator-nms/orebfuscator-nms-v1_20_R3/.flattened-pom.xml" />
       </set>
     </option>
