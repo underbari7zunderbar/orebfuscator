@@ -15,10 +15,10 @@
         <module name="orebfuscator-compatibility-api" />
         <module name="orebfuscator-nms-api" />
         <module name="orebfuscator-compatibility-paper" />
-        <module name="orebfuscator-nms-v1_20_R3" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="orebfuscator-nms-v1_20_R2" target="11" />
       <module name="orebfuscator-nms-v1_20_R3" target="11" />
     </bytecodeTargetLevel>
   </component>
